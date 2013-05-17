@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <title>Canvas Chart</title>
+    <style type='text/css'>
+        div{position:relative;}
+        canvas{border:solid 1px #CCC; padding:16px;border-radius:12px;margin:8px;background-color:#F5F9FA;}
+        input[type='button']{vertical-align:top;margin:16px 50px 0 -110px;position:relative;}
+    </style>
+</head>
+<body style="margin-left:50px;margin-top:50px;">
+    <div id='divResult' style='position:fixed;z-index:10;left:300px;top:150px;display:none;border:solid 2px #AAA;border-radius:8px;background-color:#FFFFA3;padding:8px 0;' ><img style='width:500px;height:300px' id='imgResult'/></div>
+    <div style='display:inline-block;'>
+        <canvas id="canvas2" width="600" height="400"></canvas>
+        <input type='button' id='btnSaveGraphChart' value='Save Chart'/>
+    </div>
+    <div style='display:inline-block;'>
+        <canvas id="canvas1" width="600" height="400"></canvas>
+        <input type='button' id='btnSavePieChart' value='Save Chart'/>
+    </div>
+    <div style='display:inline-block;'>
+        <canvas id="canvas0" width="600" height="400"></canvas>
+        <input type='button' id='btnSaveBarChart' value='Save Chart'/>
+    </div>
+    <div style='display:inline-block;'>
+        <canvas id="canvas5" width="600" height="400"></canvas>
+    </div>
+    <div style='display:inline-block;'>
+        <canvas id="canvas3" width="600" height="400"></canvas>
+    </div>
+    <div style='display:inline-block;'>
+        <canvas id="canvas4" width="600" height="400"></canvas>
+    </div>
+    <div id='t' style='width:400px;vertical-align:top;border:solid 1px #CCC;border-radius:8px;text-align:center;padding:4px;font-size:0.8em;height:16px;'></div>
+    <div id='graphInfo' style='display:none;cursor:pointer;position:absolute;border:solid 1px #AAA;padding:12px;border-radius:5px;width:250px;min-height:75px;background-color:#EEE;opacity:0.9;'>
+        <div style='font-weight:bold:font-size:1.1em;font-name:arial;'>Current value</div>
+        <div id='content' style='-ms-word-break:break-all;word-break:break-all;'></div>
+    </div>
+</body>
+<script type="text/javascript" src='lib/jquery-1.8.1.min.js'></script>
+<script type="text/javascript" src='lib/json2.min.js'></script>
+<script type="text/javascript" src='src/otherCharts.js'></script>
+<script type="text/javascript" src='src/graphChart.js'></script>
+<script type="text/javascript" src='src/pieChart.js'></script>
+<script type="text/javascript" src='src/barChart.js'></script>
+
+<script type="text/javascript" src='test/graphChartTest.js'></script>
+<script type="text/javascript" src='test/pieChartTest.js'></script>
+<script type="text/javascript" src='test/barChartTest.js'></script>
+
+<script type="text/javascript">
+    var rhd;
+    $('#btnSavePieChart').click(function(){
+        showSavedImage($('#canvas1')[0].toDataURL());
+        //saveBlob($('#canvas1')[0]);
+    });
+    
+    $('#btnSaveBarChart').click(function(){
+        showSavedImage($('#canvas0')[0].toDataURL());
+        //saveBlob($('#canvas0')[0]);
+    });
+    
+    $('#btnSaveGraphChart').click(function(){
+        showSavedImage($('#canvas2')[0].toDataURL());
+        //saveBlob($('#canvas2')[0]);
+    });
+    
+    function saveBlob(canvas){
+        canvas.toBlob(function(blob){
+            var url = URL.createObjectURL(blob);
+            showSavedImage(url);
+            URL.revokeObjectURL(url); 
+        });
+    }
+    
+    function showSavedImage(data){
+        $('#imgResult').attr('src', data);
+        $('#divResult').fadeIn();
+        if(rhd){
+            window.clearTimeout(rhd);
+            rhd = null;
+        }
+        rhd = window.setTimeout(function(){
+            $('#divResult').fadeOut();
+            rhd = null;
+        }, 4000);
+    }
+
+</script>
+</html>
