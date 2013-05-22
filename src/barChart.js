@@ -80,8 +80,8 @@ function drawBarChart(options){
     var events = options.events;
     if(events.click || events.mouseover){
         $(options.canvas).mousemove(function(e){
-            var x = e.pageX - $(this).offset().left - parseInt($(this).css('margin-left')) - parseInt($(this).css('padding-left'));
-            var y = e.pageY - $(this).offset().top - parseInt($(this).css('margin-top')) - parseInt($(this).css('padding-top'));
+            var x = e.pageX - $(this).offset().left - parseInt($(this).css('padding-left'));
+            var y = e.pageY - $(this).offset().top - parseInt($(this).css('padding-top'));
            
             if(prevHighlight){
                 $(options.canvas).unbind('click');

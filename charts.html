@@ -24,12 +24,15 @@
     </div>
     <div style='display:inline-block;'>
         <canvas id="canvas5" width="600" height="400"></canvas>
+        <input type='button' id='btnSaveStackedBarChart' value='Save Chart'/>
     </div>
     <div style='display:inline-block;'>
         <canvas id="canvas3" width="600" height="400"></canvas>
+        <input type='button' id='btnSaveAreaChart' value='Save Chart'/>
     </div>
     <div style='display:inline-block;'>
         <canvas id="canvas4" width="600" height="400"></canvas>
+        <input type='button' id='btnSaveStackedAreaChart' value='Save Chart'/>
     </div>
     <div id='t' style='width:400px;vertical-align:top;border:solid 1px #CCC;border-radius:8px;text-align:center;padding:4px;font-size:0.8em;height:16px;'></div>
     <div id='graphInfo' style='display:none;cursor:pointer;position:absolute;border:solid 1px #AAA;padding:12px;border-radius:5px;width:250px;min-height:75px;background-color:#EEE;opacity:0.9;'>
@@ -39,15 +42,17 @@
 </body>
 <script type="text/javascript" src='lib/jquery-1.8.1.min.js'></script>
 <script type="text/javascript" src='lib/json2.min.js'></script>
-<script type="text/javascript" src='src/otherCharts.js'></script>
+<script type="text/javascript" src='src/chartCommon.js'></script>
 <script type="text/javascript" src='src/graphChart.js'></script>
 <script type="text/javascript" src='src/pieChart.js'></script>
 <script type="text/javascript" src='src/barChart.js'></script>
-
-<script type="text/javascript" src='test/graphChartTest.js'></script>
-<script type="text/javascript" src='test/pieChartTest.js'></script>
-<script type="text/javascript" src='test/barChartTest.js'></script>
-
+<script type="text/javascript" src='src/areaChart.js'></script>
+<script type="text/javascript" src='src/stackedBarChart.js'></script>
+<script type="text/javascript" src='tests/graphChartTest.js'></script>
+<script type="text/javascript" src='tests/pieChartTest.js'></script>
+<script type="text/javascript" src='tests/barChartTest.js'></script>
+<script type="text/javascript" src='tests/areaChartTest.js'></script>
+<script type="text/javascript" src='tests/stackedBarChartTest.js'></script>
 <script type="text/javascript">
     var rhd;
     $('#btnSavePieChart').click(function(){
@@ -60,8 +65,23 @@
         //saveBlob($('#canvas0')[0]);
     });
     
+    $('#btnSaveStackedBarChart').click(function(){
+        showSavedImage($('#canvas5')[0].toDataURL());
+        //saveBlob($('#canvas0')[0]);
+    });
+    
     $('#btnSaveGraphChart').click(function(){
         showSavedImage($('#canvas2')[0].toDataURL());
+        //saveBlob($('#canvas2')[0]);
+    });
+    
+    $('#btnSaveAreaChart').click(function(){
+        showSavedImage($('#canvas3')[0].toDataURL());
+        //saveBlob($('#canvas2')[0]);
+    });
+    
+     $('#btnSaveStackedAreaChart').click(function(){
+        showSavedImage($('#canvas4')[0].toDataURL());
         //saveBlob($('#canvas2')[0]);
     });
     
