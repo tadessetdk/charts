@@ -1,4 +1,5 @@
 //Written by Tadesse D. Feyissa. May 21, 2013.
+//-niceScale object: borrowed the algorithm from Graphics gems by Andrew S. Glassner
 
 function niceScale(min, max, maxTicks) {
 
