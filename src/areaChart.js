@@ -156,7 +156,7 @@ function drawAreaGraph(options){
             
                 if(areaFound >= 0){
                  
-                    if(prevHighlight != areaFound)
+                    if(prevHighlight !== areaFound)
                     {
                         canvas.css({cursor: 'pointer'});
                         
@@ -206,7 +206,7 @@ function drawAreaGraph(options){
     }
 
     function invertColor(hex){
-         hex = hex.charAt(0) == '#' ? hex.substring(1) : hex;
+         hex = hex.charAt(0) === '#' ? hex.substring(1) : hex;
          var c = parseInt(hex, 16);
          var r = 255 - (c >> 16 & 255);
          var g = 255 - (c >> 8 & 255);
@@ -215,7 +215,7 @@ function drawAreaGraph(options){
     }
 
     function getContrast(hex){
-         hex = hex.charAt(0) == '#' ? hex.substring(1) : hex;
+         hex = hex.charAt(0) === '#' ? hex.substring(1) : hex;
          return (parseInt(hex, 16) > 0xffffff/2) ? '#000' : '#FFF';
     }
 
@@ -249,7 +249,7 @@ function drawAreaGraph(options){
             x = x0 + di[0];
             y = y0 - di[1];
 
-            if(j == 0 ){
+            if(j === 0 ){
                 yInit = y;
                 cv.moveTo(x, y);
             }

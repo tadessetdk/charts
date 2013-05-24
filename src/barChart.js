@@ -135,7 +135,7 @@ function drawBarChart(options){
             cv.strokeRect(x, y, barWidth, h);
             
             //legend
-            if(redrawOrRectangles && redrawOrRectangles != true){
+            if(redrawOrRectangles && redrawOrRectangles !== true){
                 cv.fillStyle = d.color; 
                 cv.textAlign = 'center';
                 cv.font = xAxis.font;

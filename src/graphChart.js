@@ -124,7 +124,7 @@ function drawGraph(options){
           var x = x0 + xOffset;
           var y = y0 - yOffset;
 
-          if(i == 0 ){
+          if(i === 0 ){
               cv.moveTo(x, y);
           }
 
