@@ -14,7 +14,6 @@ function drawStackedBarChart(options){
     var cv = options.canvas.getContext('2d');
     
     //draw title
-    cv.font = 'bold 18px sans-serif';
     cv.font = options.title.font;
     cv.fillStyle = options.title.color;
     cv.fillText(options.title.label, options.title.position.x, options.title.position.y);
