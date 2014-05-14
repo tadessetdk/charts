@@ -102,6 +102,6 @@ function drawPieChart(options){
 
     function getQuadrant(p){
         var dx = p.x - x0, dy = p.y - y0;
-        return dx > 0 ? (dy > 0 ? 1 : 4) : (dy > 0 ? 2 : 3);
+        return dx > 0 ? (dy > 0 ? 0 : 3) : (dy > 0 ? 1 : 2);
     }
 }
