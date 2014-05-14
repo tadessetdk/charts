@@ -96,47 +96,12 @@ function drawPieChart(options){
     function isInArc(p, arc){
        var r = Math.sqrt(Math.pow((p.x - x0), 2) + Math.pow((p.y - y0), 2));
        var rad = Math.abs(Math.atan((p.y - y0) / (p.x - x0)));
-        switch(getQuadrant(p)){
-            case 1:
-                break;
-
-            case 2:
-                rad = Math.PI - rad;
-                break;
-
-            case 3:
-                rad = Math.PI + rad;
-                break;
-
-            case 4:
-                rad = 2 * Math.PI - rad;
-                break;
-
-        }
-       
+       rad = (getQuadrant(p) * Math.PI / 2) + rad;
        return { inArc: (r <= radius && rad >= arc.begin && rad <= arc.end), angle: rad };
     }
 
     function getQuadrant(p){
-        var dx = p.x - x0;
-        var dy = p.y - y0;
-
-        if(dx > 0){
-            
-            if(dy > 0){
-                return 1;
-            }
-
-            return 4;
-        }
-        else{
-
-            if(dy > 0){
-                return 2;
-            }
-
-            return 3;
-        }
+        var dx = p.x - x0, dy = p.y - y0;
+        return dx > 0 ? (dy > 0 ? 1 : 4) : (dy > 0 ? 2 : 3);
     }
-
 }
