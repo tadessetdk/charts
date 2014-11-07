@@ -6,4 +6,4 @@ HTML5 charts
 
 - See examples in .\tests\ folder. 
 
-- See [Charts in action](http://tadessetdk.github.io/charts/index.html)
+- See [Charts in action](http://tadessetdk.github.io/charts/charts.html)
